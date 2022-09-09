@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/crd_cpd"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/bg_color"
+    app:cardCornerRadius="@dimen/_40sdp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_16sdp">
+
+        <ProgressBar
+            android:id="@+id/prg_cpd"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:indeterminateTint="@color/indeterminate_tint_and_text_color" />
+
+        <TextView
+            android:id="@+id/txt_cpd_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:includeFontPadding="false"
+            android:textColor="@color/indeterminate_tint_and_text_color"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

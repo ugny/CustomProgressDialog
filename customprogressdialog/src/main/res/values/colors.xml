@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_color">#3700B3</color>
+    <color name="indeterminate_tint_and_text_color">#E6DEFF</color>
+</resources>
