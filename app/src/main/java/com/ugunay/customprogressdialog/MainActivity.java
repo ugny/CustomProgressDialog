@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        CustomProgressDialog dialog_1 = new CustomProgressDialog();
+        CustomProgressDialog dialog_1 = CustomProgressDialog.getInstance(fragmentManager);
         dialog_1.setCancelable(false);
         dialog_1.setMessage("Loading . . .");
-        dialog_1.show(fragmentManager, CustomProgressDialog.TAG);
+        dialog_1.show();
 
         new Timer().schedule(new TimerTask() {
             @Override
@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
                         CustomProgressDialog.setBackgroundColor(getResources().getColor(R.color.teal_200));
                         CustomProgressDialog.setIndeterminateTintAndTextColor(Color.BLUE);
 
-                        CustomProgressDialog dialog_2 = new CustomProgressDialog();
+                        CustomProgressDialog dialog_2 = CustomProgressDialog.getInstance(fragmentManager);
                         dialog_2.setCancelable(false);
                         dialog_2.setMessage("Saving . . .");
-                        dialog_2.show(fragmentManager, CustomProgressDialog.TAG);
+                        dialog_2.show();
 
                         new Timer().schedule(new TimerTask() {
                             @Override

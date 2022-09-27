@@ -11,6 +11,7 @@ import android.view.Window;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.ugunay.customprogressdialog.databinding.CustomProgressDialogBinding;
 
@@ -45,16 +46,6 @@ public class CustomProgressDialog extends DialogFragment {
 
     public static final String TAG = CustomProgressDialog.class.getSimpleName();
 
-    /**
-     * Factory method.
-     *
-     * @return a new instance of this class.
-     */
-    @NonNull
-    public static CustomProgressDialog getInstance() {
-        return new CustomProgressDialog();
-    }
-
     //------------------------------BackgroundColor-------------------------------------------------
 
     // Varsayılan arka plan rengi. Varsayılan renk mavidir.
@@ -85,12 +76,33 @@ public class CustomProgressDialog extends DialogFragment {
     }
 //--------------------------------------------------------------------------------------------------
 
+    /**
+     * Factory method.
+     *
+     * @return a new instance of this class.
+     */
+    @NonNull
+    public static CustomProgressDialog getInstance(@NonNull FragmentManager fragmentManager) {
+        return new CustomProgressDialog(fragmentManager);
+    }
+
+    /**
+     * Constructor method.
+     *
+     * @param fragmentManager parent fragment manager.
+     */
+    public CustomProgressDialog(@NonNull FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
+    }
+
+    private final FragmentManager fragmentManager;
     private String message = null;
 
     /**
      * Dialog mesajını set eder.
      *
-     * @param message dialog mesajı.
+     * @param message dialog mesajı. <code>null</code> gelirse mesaj textview'i
+     *                <code>GONE</code> olacaktır.
      */
     public void setMessage(String message) {
         this.message = message;
@@ -134,7 +146,13 @@ public class CustomProgressDialog extends DialogFragment {
             binding.txtCpdMessage.setVisibility(View.VISIBLE);
             binding.txtCpdMessage.setText(message);
             binding.txtCpdMessage.setTextColor(indeterminateTintAndTextColor);
+        } else {
+            binding.txtCpdMessage.setVisibility(View.GONE);
         }
+    }
+
+    public void show() {
+        show(fragmentManager, TAG);
     }
 
     @Override
